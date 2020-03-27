@@ -2,7 +2,7 @@
     "name": "mindas/phpmvc",
     "description": "a php mvc framework project demo",
     "type": "project",
-    "license": "Apache 2.0",
+    "license": "Apache-2.0",
     "authors": [
         {
             "name": "MinQin",
