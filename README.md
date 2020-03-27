@@ -16,31 +16,31 @@ namespace:
     <script src="/storage/webres/test.js"></script>
 
 ### 2、目录描述
-|ApplicationName
-    |app (include the file of business)
-        |controllers
-        |models
-        |views
-    |cache (caching file loc)
-    |config(file of configuration)
-         config.php
-         database.php
-    |framework(framework related file)
-        |core(framework core file)
-            Application.php
-            Controller.php
-            RouteLoader.php
-            ViewLoader.php
-        |db(database related operation file)
-        |facade(framework facade file)
-            Request.php
-            Route.php
-        |helpers(framework helpers loc)
-        |library(third party app or plugin)
-    |public(entrance of the project)
-        |storage(file or data storage for dev(ers) )
-            |upload(temp dir of upload file)
-            |webres(web static resources eg:js,css,img,vioce)
-    |routes(custom routing rules)
-        web.php
-    README.md(project introduce)
+|ApplicationName  
+    |app (include the file of business)  
+        |controllers  
+        |models  
+        |views  
+    |cache (caching file loc)  
+    |config(file of configuration)  
+         config.php  
+         database.php  
+    |framework(framework related file)  
+        |core(framework core file)  
+            Application.php  
+            Controller.php  
+            RouteLoader.php  
+            ViewLoader.php  
+        |db(database related operation file)  
+        |facade(framework facade file)  
+            Request.php  
+            Route.php  
+        |helpers(framework helpers loc)  
+        |library(third party app or plugin)  
+    |public(entrance of the project)  
+        |storage(file or data storage for dev(ers) )  
+            |upload(temp dir of upload file)  
+            |webres(web static resources eg:js,css,img,vioce)  
+    |routes(custom routing rules)  
+        web.php  
+    README.md(project introduce)  
