@@ -16,6 +16,7 @@ namespace:
     <script src="/storage/webres/test.js"></script>
 
 ### 2、目录描述
+<pre>
 |ApplicationName  
     |app (include the file of business)  
         |controllers  
@@ -44,3 +45,5 @@ namespace:
     |routes(custom routing rules)  
         web.php  
     README.md(project introduce)  
+</pre>
+
