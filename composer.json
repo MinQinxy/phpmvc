@@ -1,0 +1,14 @@
+{
+    "name": "mindas/phpmvc",
+    "description": "a php mvc framework project demo",
+    "type": "project",
+    "license": "Apache 2.0",
+    "authors": [
+        {
+            "name": "MinQin",
+            "email": "43293443+MinQinxy@users.noreply.github.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {}
+}
