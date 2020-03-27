@@ -1,0 +1,5 @@
+app/controllers/*
+app/models/*
+app/view/*
+!app/view/error/*
+!.gitignore
