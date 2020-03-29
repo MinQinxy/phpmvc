@@ -3,6 +3,7 @@ namespace Vender\Core;
 
 use Vender\Core\ViewLoader;
 use Vender\Facade\Request;
+use Vender\Helpers\Error;
 
 class RouteLoader{
 
@@ -22,19 +23,15 @@ class RouteLoader{
 
 	public static function route($route,Reuqest $request = NULL ){//单实例路由  $request 位Request 封装提供接口
 		if(!isset($GLOBALS['Routing_Table'][$route])){
-			//echo "here";
-			//404
-			
-			//{
-			http_response_code(404);
-			//文件不存在
-			(new ViewLoader("error.error",array(
-				"error_state"=>"404",
-				"error_echo_message" => "404 Not Found"
-			)))->render();
-			exit();	
-			//}
-			
+			//404			
+			Error::error(404,"404 Not Found");
+			// http_response_code(404);
+			// //文件不存在
+			// (new ViewLoader("error.error",array(
+			// 	"error_state"=>"404",
+			// 	"error_echo_message" => "404 Not Found"
+			// )))->render();
+			// exit();	
 		}
 		//request update
 		$request_method = $_SERVER['REQUEST_METHOD'];
@@ -48,34 +45,33 @@ class RouteLoader{
 			//将请求转发给前端控制器
 			$dispatchinfo = explode("@",$info['dispatch']);
 			if(count($dispatchinfo)>2){
-				
-				//{
-				http_response_code(500);
-				(new ViewLoader("error.error",array(
-					"error_state"=>"500",
-					"error_echo_message" => "500 Server Error"
-				)))->render();
-				exit();
-				//}
-
+				Error::error(500,"500 Server Error");
+				// http_response_code(500);
+				// (new ViewLoader("error.error",array(
+				// 	"error_state"=>"500",
+				// 	"error_echo_message" => "500 Server Error"
+				// )))->render();
+				// exit();
 			}
+			if(count($dispatchinfo)==2)
 			self::dispatch($dispatchinfo[0],$dispatchinfo[1],$request);
+			else if(count($dispatchinfo)==1)
+			self::dispatch($dispatchinfo[0],"index",$request);
+			
 		}else{
-
-			//{
-			http_response_code(405);
-			//请求方法不支持
-			(new ViewLoader("error.error",array(
-				"error_state"=>"405",
-				"error_echo_message" => "405 Resources Banned"
-			)))->render();
-			exit();
-			//}
+			Error::error(405,"405 Resources Banned");
+			// http_response_code(405);
+			// //请求方法不支持
+			// (new ViewLoader("error.error",array(
+			// 	"error_state"=>"405",
+			// 	"error_echo_message" => "405 Resources Banned"
+			// )))->render();
+			// exit();
 		}
 
 	}
 
-	protected static function dispatch($controller="index",$action="index",Request $request=NULL){//controller=Product&action=index
+	protected static function dispatch($controller="IndexController",$action="index",Request $request=NULL){
 		$controllerClass = "Controllers\\".strtr($controller,".","\\");
 		$controllerPath = CONTROLLERS_PATH."\\".strtr($controller,".","\\").".php";
 		require $controllerPath;

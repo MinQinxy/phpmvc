@@ -21,7 +21,7 @@ class ViewLoader{
 	}
 
 	public function assigns(array $args){
-		$this->_var = array_merge($this->_var,$args);
+		$this->_var = array_merge_recursive($this->_var,$args);
 	}
 
 	public function render(){

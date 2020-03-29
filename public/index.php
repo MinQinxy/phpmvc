@@ -7,7 +7,6 @@ include "../framework/core/Application.php";
 (new Application())->run();
 
 
-
 //echo new ViewLoader("test");
 //
 //var_dump($_SERVER);
