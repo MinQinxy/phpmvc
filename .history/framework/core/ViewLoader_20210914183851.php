@@ -6,7 +6,7 @@ namespace Vender\Core;
 class ViewLoader{
 
 	protected $_viewname;
-	protected $_viewpath;
+	protected $_viewpath; 
 	protected $_var = array();
 	
 

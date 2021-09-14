@@ -1,7 +1,7 @@
 <?php
 namespace Vender\Core;
 
-
+use Vender\Core\ViewLoader;
 use Vender\Helpers\View;
 use Vender\Facade\Request;
 use Vender\Helpers\Error;
@@ -33,7 +33,7 @@ class RouteLoader{
 
 		$info = $GLOBALS['Routing_Table'][$route];
 		if(in_array("VIEW",$info['methods']) ){
-			$view = View::view($info['dispatch']);
+			$view = new ViewLoader($info['dispatch']);
 		    echo $view->render();
 
 		}else if(in_array($request_method,$info['methods'])){

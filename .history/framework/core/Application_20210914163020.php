@@ -9,7 +9,7 @@ class Application{
 	public static function run(){
 		//for test
 		//echo "FRAMEWORK_START"."<br/>";
-
+		
 		/*
 			1、执行具体代码前：加载配置，定义常量
 		 */
@@ -35,23 +35,26 @@ class Application{
 	}
 
 	public static function init(){
+		
 
+		
 		define("BASE_PATH",dirname(getcwd()));
+		
 
 		define("ENV_PATH",BASE_PATH.".env");
 		define("ENV_PREFIX","");
-		//application business defination
+		//application business defination 
 		define("CONFIG_PATH",BASE_PATH."/config");
 
 
 		//project path defination
 		define("ROUTES_PATH",BASE_PATH."/routes");
 		define("APP_PATH",BASE_PATH."/app");
-
+			
 		define("MODELS_PATH",APP_PATH."/models");
 		define("VIEWS_PATH",APP_PATH."/views");
 		define("CONTROLLERS_PATH",APP_PATH."/controllers");
-
+		
 		//framework defination
 		define("FRAMEWORK_PATH",BASE_PATH."/framework");
 		define("CORE_PATH",FRAMEWORK_PATH."/core");
@@ -59,6 +62,7 @@ class Application{
 		define("HELPERS_PATH",FRAMEWORK_PATH."/helpers");
 		define("LIBRARY_PATH",FRAMEWORK_PATH."/library");
 
+		
 		define("GALL_PATH",BASE_PATH."/public");
 		define("STORAGE_PATH",GALL_PATH."/storage");
 		//upload defination
@@ -87,20 +91,21 @@ class Application{
 
 		$GLOBALS['Routing_Table'] = array();//设置routing-table ，路由载入
 
-		// 加载自定义路由
-		$routefile = ROUTES_PATH."/"."web.php";
-		if(file_exists($routefile))
-			include_once $routefile;
 	}
 
 
 	protected static function route(){
-
+		// 加载自定义路由
+		$routefile = ROUTES_PATH."/"."web.php";
+		if(file_exists($routefile))
+			include_once $routefile;
 		//进行路由
-
+		
 		//使用原生的php $_SERVER
 		$requestinfo = parse_url($_SERVER['REQUEST_URI']);
 		RouteLoader::route($requestinfo['path']);
 	}
 
+
+	
 }

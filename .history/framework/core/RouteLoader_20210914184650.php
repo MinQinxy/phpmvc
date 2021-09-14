@@ -1,8 +1,7 @@
 <?php
 namespace Vender\Core;
 
-
-use Vender\Helpers\View;
+use Vender\Core\ViewLoader;
 use Vender\Facade\Request;
 use Vender\Helpers\Error;
 
@@ -33,7 +32,7 @@ class RouteLoader{
 
 		$info = $GLOBALS['Routing_Table'][$route];
 		if(in_array("VIEW",$info['methods']) ){
-			$view = View::view($info['dispatch']);
+			$view = new ViewLoader($info['dispatch']);
 		    echo $view->render();
 
 		}else if(in_array($request_method,$info['methods'])){
@@ -50,7 +49,13 @@ class RouteLoader{
 
 		}else{
 			Error::error(405,"405 Resources Banned");
-
+			// http_response_code(405);
+			// //请求方法不支持
+			// (new ViewLoader("error.error",array(
+			// 	"error_state"=>"405",
+			// 	"error_echo_message" => "405 Resources Banned"
+			// )))->render();
+			// exit();
 		}
 
 	}

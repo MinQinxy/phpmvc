@@ -87,15 +87,14 @@ class Application{
 
 		$GLOBALS['Routing_Table'] = array();//设置routing-table ，路由载入
 
-		// 加载自定义路由
-		$routefile = ROUTES_PATH."/"."web.php";
-		if(file_exists($routefile))
-			include_once $routefile;
 	}
 
 
 	protected static function route(){
-
+		// 加载自定义路由
+		$routefile = ROUTES_PATH."/"."web.php";
+		if(file_exists($routefile))
+			include_once $routefile;
 		//进行路由
 
 		//使用原生的php $_SERVER

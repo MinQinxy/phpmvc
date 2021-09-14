@@ -6,7 +6,7 @@ namespace Vender\Core;
 class ViewLoader{
 
 	protected $_viewname;
-	protected $_viewpath;
+	protected $_viewpath; 
 	protected $_var = array();
 	
 
@@ -25,15 +25,12 @@ class ViewLoader{
 	}
 
 	public function render(){
-		$__viewFile__ = VIEWS_PATH."/".$this->_viewpath.".php";//这里以html 为例
-		$this->renderView($__viewFile__,$this->_var);
-	}
+		extract($this->_var);
+		$viewFile = VIEWS_PATH."/".$this->_viewpath.".php";//这里以html 为例
+		include $viewFile ;//如果出错则报错
 
-	protected function renderView(string $__viewFile__,array $__var__){
-		extract($__var__);
-		include $__viewFile__;//如果出错则报错
-	}
 
+	}
 
 	public function __toString(){
 		return $this->_viewname;
